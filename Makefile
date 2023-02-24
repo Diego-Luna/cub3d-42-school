@@ -6,13 +6,13 @@
 #    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/23 09:57:37 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/24 12:52:56 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS
 NAME	=	cub3D
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
 CC		=	gcc $(FLAGS)
 
 # FILES
@@ -23,6 +23,9 @@ UTLSDIR	=	utils/
 UTILS	=	$(UTLSDIR)parsing.c		\
 			$(UTLSDIR)gnl/gnl.c		\
 
+# MLX
+USER	=	$(shell whoami)
+MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 # HEADERS
 HEADERS	=	includes/cub3d.h
@@ -41,14 +44,25 @@ RESET	=	\033[0m
 all:		$(NAME)
 
 $(NAME):	$(SRCS) $(UTILS)
-	@$(CC)	$(SRCS) $(UTILS) -o $(NAME)
+	@for i in $(SRCS) $(UTILS); do \
+		sleep 0.45; \
+		echo "$(YELLOW)Compiling: $(RESET)$$i"; \
+		$(CC) -c $(MLXLIB) $$i -o $$i.o; \
+	done
+	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
+	@sleep 	0.5
 	@echo	"$(GREEN)$(NAME) created$(RESET)"
 
 clean:
-	@rm -f	$(NAME)
-	@echo	"$(PURPLE)$(NAME) deleted$(RESET)"
+	@for i in $(SRCS) $(UTILS); do \
+		sleep 0.333; \
+		echo "$(RED)Deleting: $(RESET)$$i.o"; \
+		rm -f $$i.o; \
+	done
 
 fclean:		clean
+			@rm -f $(NAME)
+			@echo	"$(PURPLE)$(NAME) deleted$(RESET)"
 
 re:			fclean all
 

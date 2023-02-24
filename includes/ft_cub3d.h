@@ -6,7 +6,7 @@
 /*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/23 10:26:31 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:19:06 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+# include "mlx/include/MLX42/MLX42.h"
 
 # define EXTENSION ".cub"
 
@@ -30,6 +31,8 @@ char	*ft_strdup(char *s1, char *s2);
 int		ft_strlen(char *str);
 
 //	pasring.c
+bool	ft_parsemap(int fd, char *line);
+bool	ft_complexfile(char *file, int i);
 bool	ft_checkfile(char *file);
 bool	ft_strchr(char *s1, char *s2);
 
