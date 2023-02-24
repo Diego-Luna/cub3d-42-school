@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
+#    By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/23 09:57:37 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/24 03:00:14 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,14 +41,24 @@ RESET	=	\033[0m
 all:		$(NAME)
 
 $(NAME):	$(SRCS) $(UTILS)
+	@for i in $(SRCS) $(UTILS); do \
+		sleep 0.2; \
+		echo "$(YELLOW)Compiling: $(RESET)$$i"; \
+		$(CC) -c $$i -o $$i.o; \
+	done
 	@$(CC)	$(SRCS) $(UTILS) -o $(NAME)
 	@echo	"$(GREEN)$(NAME) created$(RESET)"
 
 clean:
-	@rm -f	$(NAME)
-	@echo	"$(PURPLE)$(NAME) deleted$(RESET)"
+	@for i in $(SRCS) $(UTILS); do \
+		sleep 0.2; \
+		echo "$(RED)Deleting: $(RESET)$$i.o"; \
+		rm -f $$i.o; \
+	done
 
 fclean:		clean
+			@rm -f $(NAME)
+			@echo	"$(PURPLE)$(NAME) deleted$(RESET)"
 
 re:			fclean all
 
