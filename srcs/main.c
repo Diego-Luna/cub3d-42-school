@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 14:05:43 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:38:52 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(state.mlx, &hook, state.mlx);
 	mlx_loop(state.mlx);
 	mlx_terminate(state.mlx);
+	ft_free_all(&state);
 	return (0);
 }

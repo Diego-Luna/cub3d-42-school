@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:28:08 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 15:13:51 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:42:21 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,30 @@ char	*ft_free(char *src)
 		free(src);
 	}
 	return (NULL);
+}
+
+char	*ft_free_table(char **src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		ft_free(src[i]);
+		i++;
+	}
+	free(src);
+	return (NULL);
+}
+
+void	ft_free_all(t_state *state)
+{
+	t_map	*map;
+
+	map = &state->map;
+	ft_free_table(map->map);
+	ft_free(map->no);
+	ft_free(map->so);
+	ft_free(map->we);
+	ft_free(map->ea);
 }
