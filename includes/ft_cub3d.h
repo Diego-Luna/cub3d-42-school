@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 14:03:16 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:43:23 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,11 @@ bool	ft_strchr(char *s1, char *s2);
 // start_state
 void	ft_start_state(t_state *state);
 void	ft_save_map(t_state *state, char *file);
+
+
+// utils
+void *ft_callo(int size, int type);
+char *ft_free(char *src);
+char *ft_newstr(char *str);
 
 #endif

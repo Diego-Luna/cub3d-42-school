@@ -1,4 +1,5 @@
 includes/mlx/
+.vscode/
 
 # Prerequisites
 *.d

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:22:40 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 14:04:35 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:21:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_start_state(t_state *state)
 	state->map.ea = NULL;
 	state->map.floor = NULL;
 	state->map.ceilling = NULL;
-
 	state->player.position_x = -1;
 	state->player.position_y = -1;
 	state->player.direccion = NO_D;
