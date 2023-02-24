@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 10:19:06 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:03:16 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,41 @@
 
 # define EXTENSION ".cub"
 
+# define NO_D 0
+# define D_NO 1
+# define D_SO 2
+# define D_WE 3
+# define D_EA 4
+
+typedef struct s_map
+{
+	char **map;
+	int 	w_map;
+	int 	h_map;
+	char *no;
+	char *so;
+	char *we;
+	char *ea;
+	char *floor;
+	char *ceilling;
+}					t_map;
+
+typedef struct s_player
+{
+	int 	position_x;
+	int 	position_y;
+	int	 	direccion;
+	int	 	angle;
+}					t_player;
+
+typedef struct s_state
+{
+	mlx_t	*mlx;
+	t_map map;
+	t_player player;
+}					t_state;
+
+
 /*		utils		*/
 /*		gnl			*/
 //	gnl.c
@@ -35,5 +70,10 @@ bool	ft_parsemap(int fd, char *line);
 bool	ft_complexfile(char *file, int i);
 bool	ft_checkfile(char *file);
 bool	ft_strchr(char *s1, char *s2);
+
+
+// start_state
+void	ft_start_state(t_state *state);
+void	ft_save_map(t_state *state, char *file);
 
 #endif

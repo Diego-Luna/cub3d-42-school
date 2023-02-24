@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 12:52:10 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:05:43 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	hook(void *param)
 
 int	main(int ac, char **av)
 {
-	mlx_t	*mlx;
+	// mlx_t	*mlx;
+	t_state state;
 
 	if (ac != 2)
 		return (0);
@@ -45,16 +46,18 @@ int	main(int ac, char **av)
 		printf("Error check file!\n");
 		return (0);
 	}
-	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-	if (!mlx)
+	ft_start_state(&state);
+	ft_save_map(&state, av[1]);
+
+	state.mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
+	if (!state.mlx)
 		return (0);
 	printf("OK!\n");
-	img = mlx_new_image(mlx, 128, 128);
+	img = mlx_new_image(state.mlx, 128, 128);
 	memset(img->pixels, 255, img->width * img->height * sizeof(int));
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_loop_hook(mlx, &hook, mlx);
-	mlx_loop(mlx);
-
-	mlx_terminate(mlx);
+	mlx_image_to_window(state.mlx, img, 0, 0);
+	mlx_loop_hook(state.mlx, &hook, state.mlx);
+	mlx_loop(state.mlx);
+	mlx_terminate(state.mlx);
 	return (0);
 }
