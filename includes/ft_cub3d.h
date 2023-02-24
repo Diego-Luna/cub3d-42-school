@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 03:03:50 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:19:06 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+# include "mlx/include/MLX42/MLX42.h"
 
 # define EXTENSION ".cub"
 

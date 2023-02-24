@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atopalli <atopalli@42.quebec.com>          +#+  +:+       +#+         #
+#    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/24 03:00:14 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/24 12:52:56 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS
 NAME	=	cub3D
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
 CC		=	gcc $(FLAGS)
 
 # FILES
@@ -23,6 +23,9 @@ UTLSDIR	=	utils/
 UTILS	=	$(UTLSDIR)parsing.c		\
 			$(UTLSDIR)gnl/gnl.c		\
 
+# MLX
+USER	=	$(shell whoami)
+MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 # HEADERS
 HEADERS	=	includes/cub3d.h
@@ -42,16 +45,17 @@ all:		$(NAME)
 
 $(NAME):	$(SRCS) $(UTILS)
 	@for i in $(SRCS) $(UTILS); do \
-		sleep 0.2; \
+		sleep 0.45; \
 		echo "$(YELLOW)Compiling: $(RESET)$$i"; \
-		$(CC) -c $$i -o $$i.o; \
+		$(CC) -c $(MLXLIB) $$i -o $$i.o; \
 	done
-	@$(CC)	$(SRCS) $(UTILS) -o $(NAME)
+	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
+	@sleep 	0.5
 	@echo	"$(GREEN)$(NAME) created$(RESET)"
 
 clean:
 	@for i in $(SRCS) $(UTILS); do \
-		sleep 0.2; \
+		sleep 0.333; \
 		echo "$(RED)Deleting: $(RESET)$$i.o"; \
 		rm -f $$i.o; \
 	done
