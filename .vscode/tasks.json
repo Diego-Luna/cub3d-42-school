@@ -5,7 +5,7 @@
 		{
 			"label": "build program",
 			"type": "shell",
-			"command": "make all"
+			"command": "make"
 		}
 	]
 }

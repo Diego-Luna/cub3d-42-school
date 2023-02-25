@@ -6,7 +6,7 @@
 #    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/25 01:17:51 by atopalli         ###   ########.fr        #
+#    Updated: 2023/02/25 02:31:59 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CC		=	gcc $(FLAGS)
 # FILES
 SRCSDIR	=	srcs/
 SRCS	=	$(SRCSDIR)main.c		\
+			$(SRCSDIR)validate.c	\
 
 UTLSDIR	=	utils/
 UTILS	=	$(UTLSDIR)parsing.c		\
