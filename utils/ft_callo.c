@@ -6,25 +6,27 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:28:08 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 15:42:21 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:55:21 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_cub3d.h"
 
-void	*ft_callo(int size, int type)
+void	*ft_calloc(size_t size, size_t type)
 {
-	int		i;
+	size_t		i;
 	char	*str;
 
 	i = 0;
 	str = malloc(size * type);
+	if (str == NULL)
+		return (0);
 	while (i < size * type)
 	{
 		str[i] = 0;
 		i++;
 	}
-	return ((void *)str);
+	return (str);
 }
 
 char	*ft_newstr(char *str)
@@ -35,7 +37,7 @@ char	*ft_newstr(char *str)
 
 	i = 0;
 	size = 0;
-	new = ft_callo(ft_strlen(str) + 1, sizeof(char));
+	new = ft_calloc(ft_strlen(str) + 1, sizeof(char));
 	size = ft_strlen(str);
 	while (i < size)
 	{

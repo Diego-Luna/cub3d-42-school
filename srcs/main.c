@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 15:38:52 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:39:22 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,17 @@ int	main(int ac, char **av)
 		return (0);
 	if (!ft_checkfile(av[1]))
 	{
-		printf("Error check file!\n");
+		// printf("Error check file!\n");
+		ft_error(&state, "Error check file");
 		return (0);
 	}
 	ft_start_state(&state);
 	ft_save_map(&state, av[1]);
+	if (ft_valid_map(&state) == false)
+	{
+		ft_error(&state, "Error map no valid");
+		return (0);
+	}
 
 	state.mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
 	if (!state.mlx)

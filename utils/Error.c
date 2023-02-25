@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_state.c                                      :+:      :+:    :+:   */
+/*   Error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:22:40 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 18:58:14 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/24 18:20:51 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/24 18:57:00 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_cub3d.h"
 
-void	ft_start_state(t_state *state)
+void	ft_error_print(char *msg){
+	write(2, msg, ft_strlen(msg));
+}
+
+void	ft_error(t_state *state, char *msg)
 {
-	state->map.map = NULL;
-	state->map.w_map = 0;
-	state->map.h_map = 0;
-	state->map.no = NULL;
-	state->map.so = NULL;
-	state->map.we = NULL;
-	state->map.ea = NULL;
-	state->map.floor = NULL;
-	state->map.ceilling = NULL;
-	state->player.position_x = -1;
-	state->player.position_y = -1;
-	state->player.direccion = NO_D;
-	state->player.angle = -1;
+	ft_error_print(msg);
+	ft_free_all(state);
+	exit(0);
 }
