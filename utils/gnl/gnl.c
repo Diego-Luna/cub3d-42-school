@@ -6,11 +6,11 @@
 /*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:01:39 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/23 11:59:43 by atopalli         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:18:29 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	ft_strlen(char *str)
 {

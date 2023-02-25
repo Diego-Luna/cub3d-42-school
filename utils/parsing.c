@@ -3,39 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:39:49 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 13:39:09 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:18:06 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_cub3d.h"
+#include "../includes/cub3d.h"
 
-bool	ft_parsemap(int fd, char *line)
+uint32_t	ft_atoul(char *str)
 {
-	if (!line)
-		line = ft_gnl(fd);
-	while (line)
+	int			i;
+	uint32_t	nb;
+
+	i = 0;
+	nb = 0;
+	while (str[i] == ' ')
+		i += 1;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		printf("%s", line);
-		free(line);
-		line = ft_gnl(fd);
+		nb = nb * 10 + str[i] - '0';
+		i += 1;
+		if (str[i] == ',')
+			i += 1;
 	}
-	return (close(fd), true);
+	if (i == 0 || str[i] != '\0')
+		return (-1);
+	return (nb);
 }
 
-bool	ft_complexfile(char *file, int i)
+char	*ft_parsepath(char *file)
 {
-	// void	(*ptr_func[8])(char *);
+	int		fd;
+	int		i;
+	char	*path;
+
+	i = 0;
+	path = NULL;
+	while (file[i] != '.')
+		i += 1;
+	path = ft_strdup(file + i, NULL);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	return (close(fd), path);
+}
+
+bool	ft_complexfile(char *file, int i, t_state *state)
+{
 	char	*str[8];
 
-	// ptr_func[0] = ft_northimg;
-	// ptr_func[1] = ft_southimg;
-	// ptr_func[2] = ft_westimg;
-	// ptr_func[3] = ft_eastimg;
-	// ptr_func[5] = ft_floorimg;
-	// ptr_func[6] = ft_ceillingimg;
 	str[0] = "NO";
 	str[1] = "SO";
 	str[2] = "WE";
@@ -44,12 +62,22 @@ bool	ft_complexfile(char *file, int i)
 	str[5] = "F";
 	str[6] = "C";
 	str[7] = "\n";
-	// if (i != 4 && i != 7 && ft_strchr(file, str[i]))
-	// 	ptr_func[i](file + 2);
+	if (i == 0)
+		state->map.no = ft_parsepath(file + 2);
+	else if (i == 1)
+		state->map.so = ft_parsepath(file + 2);
+	else if (i == 2)
+		state->map.we = ft_parsepath(file + 2);
+	else if (i == 3)
+		state->map.ea = ft_parsepath(file + 2);
+	else if (i == 5)
+		state->map.floor_color = ft_atoul(file + 1);
+	else if (i == 6)
+		state->map.ceilling_color = ft_atoul(file + 1);
 	return (ft_strchr(file, str[i]));
 }
 
-bool	ft_checkfile(char *file)
+bool	ft_checkfile(char *file, t_state *state)
 {
 	int		i;
 	int		fd;
@@ -64,7 +92,7 @@ bool	ft_checkfile(char *file)
 	{
 		while (1)
 		{
-			if (i == 7 || !ft_complexfile(line, i))
+			if (i == 7 || !ft_complexfile(line, i, state))
 				break ;
 			free(line);
 			line = ft_gnl(fd);
@@ -74,7 +102,7 @@ bool	ft_checkfile(char *file)
 	}
 	if (i != 0 && i != 7)
 		return (close(fd), false);
-	return (ft_parsemap(fd, line));
+	return (close(fd), true);
 }
 
 bool	ft_strchr(char *s1, char *s2)

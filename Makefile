@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
+#    By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/24 14:03:32 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/02/25 01:17:51 by atopalli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRCS	=	$(SRCSDIR)main.c		\
 UTLSDIR	=	utils/
 UTILS	=	$(UTLSDIR)parsing.c		\
 			$(UTLSDIR)gnl/gnl.c		\
-			$(UTLSDIR)start_state.c		\
-			$(UTLSDIR)save_map.c		\
+			$(UTLSDIR)start_state.c	\
+			$(UTLSDIR)save_map.c	\
 
 # MLX
 USER	=	$(shell whoami)
@@ -46,13 +46,12 @@ RESET	=	\033[0m
 all:		$(NAME)
 
 $(NAME):	$(SRCS) $(UTILS)
-	# @for i in $(SRCS) $(UTILS); do \
-	# 	sleep 0.45; \
-	# 	echo "$(YELLOW)Compiling: $(RESET)$$i"; \
-	# 	$(CC) -c $(MLXLIB) $$i -o $$i.o; \
-	# done
+	@for i in $(SRCS) $(UTILS); do \
+		sleep 0.233; \
+		echo "$(YELLOW)Compiling: $(RESET)$$i"; \
+	done
 	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
-	@sleep 	0.5
+	@sleep 	0.333
 	@echo	"$(GREEN)$(NAME) created$(RESET)"
 
 clean:
@@ -66,6 +65,9 @@ fclean:		clean
 			@rm -f $(NAME)
 			@echo	"$(PURPLE)$(NAME) deleted$(RESET)"
 
+norm:
+	@norminette $(SRCS) $(UTILS) $(HEADERS)
+
 re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm

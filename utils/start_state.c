@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   start_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:22:40 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 14:04:35 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:19:35 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_cub3d.h"
+#include "../includes/cub3d.h"
 
 void	ft_start_state(t_state *state)
 {
@@ -23,7 +23,6 @@ void	ft_start_state(t_state *state)
 	state->map.ea = NULL;
 	state->map.floor = NULL;
 	state->map.ceilling = NULL;
-
 	state->player.position_x = -1;
 	state->player.position_y = -1;
 	state->player.direccion = NO_D;

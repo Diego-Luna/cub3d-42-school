@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub3d.h                                         :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 14:03:16 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:20:28 by atopalli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB3D_H
-# define FT_CUB3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -31,32 +31,34 @@
 
 typedef struct s_map
 {
-	char **map;
-	int 	w_map;
-	int 	h_map;
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
-	char *floor;
-	char *ceilling;
+	char		**map;
+	int			w_map;
+	int			h_map;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*floor;
+	uint32_t	floor_color;
+	char		*ceilling;
+	uint32_t	ceilling_color;
 }					t_map;
 
 typedef struct s_player
 {
-	int 	position_x;
-	int 	position_y;
-	int	 	direccion;
-	int	 	angle;
+	int	position_x;
+	int	position_y;
+	int	direccion;
+	int	angle;
 }					t_player;
 
 typedef struct s_state
 {
-	mlx_t	*mlx;
-	t_map map;
-	t_player player;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_map		map;
+	t_player	player;
 }					t_state;
-
 
 /*		utils		*/
 /*		gnl			*/
@@ -66,11 +68,9 @@ char	*ft_strdup(char *s1, char *s2);
 int		ft_strlen(char *str);
 
 //	pasring.c
-bool	ft_parsemap(int fd, char *line);
-bool	ft_complexfile(char *file, int i);
-bool	ft_checkfile(char *file);
+bool	ft_complexfile(char *file, int i, t_state *state);
+bool	ft_checkfile(char *file, t_state *state);
 bool	ft_strchr(char *s1, char *s2);
-
 
 // start_state
 void	ft_start_state(t_state *state);

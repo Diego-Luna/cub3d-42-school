@@ -1,0 +1,17 @@
+{
+	//change args to your map file (e.g. "${workspaceFolder}/map/simple.cub")
+	"configurations": [
+	{
+		"name": "cub3D debugging",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/cub3D",
+		"args": ["${workspaceFolder}/map/simple.cub"],
+		"stopAtEntry": false,
+		"cwd": "${fileDirname}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb"
+	}
+	]
+}
