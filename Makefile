@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
+#    By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/24 18:27:04 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/02/25 10:57:00 by diegofranci      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS
 NAME	=	cub3D
-FLAGS	=	-Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
+# FLAGS	=	-Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
+FLAGS	=	-Wall -Wextra -Werror
 CC		=	gcc $(FLAGS)
 
 # FILES
@@ -30,7 +31,7 @@ UTILS	=	$(UTLSDIR)parsing.c		\
 
 # MLX
 USER	=	$(shell whoami)
-MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+# MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 # HEADERS
 HEADERS	=	includes/cub3d.h
@@ -54,7 +55,8 @@ $(NAME):	$(SRCS) $(UTILS)
 	# 	echo "$(YELLOW)Compiling: $(RESET)$$i"; \
 	# 	$(CC) -c $(MLXLIB) $$i -o $$i.o; \
 	# done
-	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
+	# @$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
+	@$(CC)	$(SRCS) $(UTILS) -o $(NAME)
 	@sleep 	0.5
 	@echo	"$(GREEN)$(NAME) created$(RESET)"
 

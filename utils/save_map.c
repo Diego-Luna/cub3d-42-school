@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:58:13 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 18:56:13 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:52:07 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,42 +70,6 @@ int	ft_get_info_map(t_state *state, int i, int *start, int fd)
 	state->map.w_map = wi;
 	return (count);
 }
-// int	ft_get_info_map(t_state *state, char *file, int *start)
-// {
-// 	int		i;
-// 	int		count;
-// 	int		wi;
-// 	int		fd;
-// 	char	*line;
-
-// 	i = 0;
-// 	wi = 0;
-// 	count = 0;
-// 	fd = open(file, O_RDONLY);
-// 	line = NULL;
-// 	while (line != NULL || (i == 0))
-// 	{
-// 		if (count > 0)
-// 			line = ft_free(line);
-// 		line = ft_gnl(fd);
-// 		if (line && ((ft_ckeck_caracteer(line[0]) == true || line[0] == ' ')
-// 				&& ft_ckeck_caracteer(line[ft_strlen(line) - 2]) == true))
-// 		{
-// 			if (wi < ft_strlen(line))
-// 				wi = ft_strlen(line);
-// 			if (*start == -1)
-// 				*start = count;
-// 			i++;
-// 		}
-// 		if (!line)
-// 			break ;
-// 		count++;
-// 	}
-// 	close(fd);
-// 	state->map.h_map = i;
-// 	state->map.w_map = wi;
-// 	return (count);
-// }
 
 void	ft_crreate_map(t_state *state, char *file, int count, int start)
 {
@@ -151,6 +115,6 @@ void	ft_save_map(t_state *state, char *file)
 	i = state->map.h_map;
 	state->map.map = (char **)ft_calloc(i + 1, sizeof(char *));
 	ft_crreate_map(state, file, count, start);
-	printf("\n -d\n");
-	ft_print_map(state->map.map);
+	// printf("\n -d\n");
+	// ft_print_map(state->map.map);
 }

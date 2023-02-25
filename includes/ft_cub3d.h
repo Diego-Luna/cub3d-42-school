@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/24 18:37:57 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/25 11:01:00 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
-# include "mlx/include/MLX42/MLX42.h"
+// # include "mlx/include/MLX42/MLX42.h"
 
 # define EXTENSION ".cub"
 
@@ -52,7 +52,7 @@ typedef struct s_player
 
 typedef struct s_state
 {
-	mlx_t	*mlx;
+	// mlx_t	*mlx;
 	t_map map;
 	t_player player;
 }					t_state;
