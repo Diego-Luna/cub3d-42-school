@@ -6,7 +6,7 @@
 /*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:58:13 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/25 12:52:07 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/25 13:50:05 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,4 @@ void	ft_save_map(t_state *state, char *file)
 	i = state->map.h_map;
 	state->map.map = (char **)ft_calloc(i + 1, sizeof(char *));
 	ft_crreate_map(state, file, count, start);
-	// printf("\n -d\n");
-	// ft_print_map(state->map.map);
 }
