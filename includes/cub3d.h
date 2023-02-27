@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   cub3d.h                                        ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/26 21:03:48 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/27 12:54:44 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,19 @@ bool			ft_strchr(char *s1, char *s2);
 // start_state
 void			ft_start_state(t_state *state);
 void			ft_save_map(t_state *state, char *file);
+
+// valid map
+bool ft_valid_map(t_state *state);
+
+// Error
+void	ft_error(t_state *state, char *msg);
+void	ft_only_error(char *msg);
+
+// utils
+void	*ft_calloc(size_t size, size_t type);
+char *ft_free(char *src);
+char *ft_newstr(char *str);
+void ft_free_all(t_state *state);
+
 
 #endif

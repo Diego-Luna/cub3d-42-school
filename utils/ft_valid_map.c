@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:15:17 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/25 13:50:34 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/27 12:55:55 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_cub3d.h"
+#include "../includes/cub3d.h"
 
 void	ft_run_map_xy(t_state *state, void (*f)(t_state *, char, int, int))
 {

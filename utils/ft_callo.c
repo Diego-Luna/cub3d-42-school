@@ -6,11 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:28:08 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/27 12:38:49 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:55:53 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_cub3d.h"
+#include "../includes/cub3d.h"
 
 void	*ft_calloc(size_t size, size_t type)
 {
