@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:20:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/24 18:57:00 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:28:50 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,11 @@ void	ft_error(t_state *state, char *msg)
 {
 	ft_error_print(msg);
 	ft_free_all(state);
+	exit(0);
+}
+
+void	ft_only_error(char *msg)
+{
+	ft_error_print(msg);
 	exit(0);
 }

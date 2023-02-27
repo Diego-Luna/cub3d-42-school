@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+         #
+#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/25 14:13:03 by diegofranci      ###   ########.fr        #
+#    Updated: 2023/02/27 12:45:04 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS
 NAME	=	cub3D
-# FLAGS	=	-Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-g -Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
+# FLAGS	=	-g -Wall -Wextra -Werror
 CC		=	gcc $(FLAGS)
 
 # FILES
@@ -31,8 +31,8 @@ UTILS	=	$(UTLSDIR)parsing.c		\
 
 # MLX
 USER	=	$(shell whoami)
-# MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
-MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/"
+MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+# MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/"
 
 # HEADERS
 HEADERS	=	includes/cub3d.h

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:58:13 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/25 13:50:05 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/27 12:43:31 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,18 @@ void	ft_crreate_map(t_state *state, char *file, int count, int start)
 	fd = open(file, O_RDONLY);
 	i = 0;
 	wi = 0;
-	line = NULL;
-	while (i < count)
+	line = ft_gnl(fd);
+	(void)count;
+	while (line != NULL)
 	{
-		if (i > 0)
-		{
-			line = ft_free(line);
-		}
-		line = ft_gnl(fd);
-		if (i >= start)
+		if (i >= start && wi < state->map.h_map)
 		{
 			state->map.map[wi] = ft_newstr(line);
 			wi++;
 		}
 		i++;
+		line = ft_free(line);
+		line = ft_gnl(fd);
 	}
 	ft_free(line);
 	close(fd);
@@ -113,6 +111,9 @@ void	ft_save_map(t_state *state, char *file)
 	count = ft_get_info_map(state, i, &start, fd);
 	close(fd);
 	i = state->map.h_map;
-	state->map.map = (char **)ft_calloc(i + 1, sizeof(char *));
-	ft_crreate_map(state, file, count, start);
+	state->map.map = ft_calloc(i + 1, sizeof(char *));
+	if (!state->map.map)
+		ft_error(state, "Error calloc");
+	ft_crreate_map(state, file, i, start);
+	ft_print_map(state->map.map);
 }

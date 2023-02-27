@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/25 14:15:02 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/27 12:44:51 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ bool ft_valid_map(t_state *state);
 
 // Error
 void	ft_error(t_state *state, char *msg);
+void	ft_only_error(char *msg);
 
 // utils
 void	*ft_calloc(size_t size, size_t type);
