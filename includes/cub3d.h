@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/27 16:50:24 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:23:11 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,26 @@ typedef struct s_state
 	t_map		map;
 	t_player	player;
 }				t_state;
+
+
+// -> Raycasting
+struct Sprite
+{
+  double x;
+  double y;
+  int texture;
+};
+
+#define screenWidth 640
+#define screenHeight 480
+#define texWidth 64 // must be power of two
+#define texHeight 64 // must be power of two
+#define mapWidth 24
+#define mapHeight 24
+
+#define numSprites 19
+
+// <- Raycasting
 
 /*		utils		*/
 /*		gnl			*/

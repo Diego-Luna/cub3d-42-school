@@ -6,33 +6,26 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:27:42 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/27 17:09:05 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:01:02 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-#include <cmath>
-#include <string>
-#include <vector>
-#include <iostream>
+// #include <cmath>
+// #include <string>
+// #include <vector>
+// #include <iostream>
 
-#include "quickcg.h"
-using namespace QuickCG;
+// #include "quickcg.h"
+// using namespace QuickCG;
 
 /*
 g++ *.cpp -lSDL -O3 -W -Wall -ansi -pedantic
 g++ *.cpp -lSDL
 */
 
-
-#define screenWidth 640
-#define screenHeight 480
-#define texWidth 64 // must be power of two
-#define texHeight 64 // must be power of two
-#define mapWidth 24
-#define mapHeight 24
-
+// Change the state->map.map
 int worldMap[mapWidth][mapHeight] =
 {
   {8,8,8,8,8,8,8,8,8,8,8,4,4,6,4,4,6,4,6,4,4,4,6,4},
@@ -60,15 +53,6 @@ int worldMap[mapWidth][mapHeight] =
   {2,2,0,0,0,0,0,2,2,2,0,0,0,2,2,0,5,0,5,0,0,0,5,5},
   {2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,5,5,5,5,5,5,5,5,5}
 };
-
-struct Sprite
-{
-  double x;
-  double y;
-  int texture;
-};
-
-#define numSprites 19
 
 Sprite sprite[numSprites] =
 {
@@ -98,7 +82,7 @@ Sprite sprite[numSprites] =
   {10.5, 15.8,8},
 };
 
-Uint32 buffer[screenHeight][screenWidth]; // y-coordinate first because it works per scanline
+uint32_t buffer[screenHeight][screenWidth]; // y-coordinate first because it works per scanline
 
 //1D Zbuffer
 double ZBuffer[screenWidth];
@@ -112,14 +96,15 @@ void sortSprites(int* order, double* dist, int amount);
 
 int main(int /*argc*/, char */*argv*/[])
 {
-  double posX = 22.0, posY = 11.5; //x and y start position
+  double posX = 22.0, posY = 11.5; //x and y start position, change for player
   double dirX = -1.0, dirY = 0.0; //initial direction vector
   double planeX = 0.0, planeY = 0.66; //the 2d raycaster version of camera plane
 
   double time = 0; //time of current frame
   double oldTime = 0; //time of previous frame
 
-  std::vector<Uint32> texture[11];
+  // std::vector<Uint32> texture[11];
+  uint32_t texture[11];
   for(int i = 0; i < 11; i++) texture[i].resize(texWidth * texHeight);
 
   screen(screenWidth,screenHeight, 0, "Raycaster");
@@ -205,7 +190,6 @@ int main(int /*argc*/, char */*argv*/[])
         buffer[screenHeight - y - 1][x] = color;
       }
     }
-
     // WALL CASTING
     for(int x = 0; x < w; x++)
     {
