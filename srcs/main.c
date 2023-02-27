@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   main.c                                         ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/23 08:25:31 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/27 00:33:54 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/27 12:50:26 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	main(int ac, char **av)
 		return (0);
 	if (!ft_checkfile(av[1], &state))
 	{
-		printf("Error check file!\n");
+		// printf("Error check file!\n");
+		ft_error(&state, "Error check file");
 		return (0);
 	}
 	ft_start_state(&state);
@@ -62,5 +63,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(state.mlx, &hook, (void *)&state);
 	mlx_loop(state.mlx);
 	mlx_terminate(state.mlx);
+	ft_free_all(&state);
 	return (0);
 }
