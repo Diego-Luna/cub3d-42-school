@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   start_state.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:22:40 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/25 00:19:35 by atopalli         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   start_state.c                                  ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/24 13:22:40 by dluna-lo            ██║███████╗          */
+/*   Updated: 2023/02/27 10:50:23 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	ft_start_state(t_state *state)
 	state->map.so = NULL;
 	state->map.we = NULL;
 	state->map.ea = NULL;
-	state->map.floor = NULL;
-	state->map.ceilling = NULL;
+	state->map.floor_color = 0;
+	state->map.floor = NULL; //ft_strdup("76,208,240", NULL); default ?
+	state->map.ceilling_color = 0;
+	state->map.ceilling = NULL; //ft_strdup("52,86,110", NULL); default ?
 	state->player.position_x = -1;
 	state->player.position_y = -1;
 	state->player.direccion = NO_D;
