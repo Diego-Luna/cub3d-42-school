@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/25 00:20:28 by atopalli         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   cub3d.h                                        ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
+/*   Updated: 2023/02/26 21:03:48 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
+# include "mlx/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
-# include "mlx/include/MLX42/MLX42.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # define EXTENSION ".cub"
 
@@ -42,15 +42,15 @@ typedef struct s_map
 	uint32_t	floor_color;
 	char		*ceilling;
 	uint32_t	ceilling_color;
-}					t_map;
+}				t_map;
 
 typedef struct s_player
 {
-	int	position_x;
-	int	position_y;
-	int	direccion;
-	int	angle;
-}					t_player;
+	int			position_x;
+	int			position_y;
+	int			direccion;
+	int			angle;
+}				t_player;
 
 typedef struct s_state
 {
@@ -58,22 +58,23 @@ typedef struct s_state
 	mlx_image_t	*img;
 	t_map		map;
 	t_player	player;
-}					t_state;
+}				t_state;
 
 /*		utils		*/
 /*		gnl			*/
 //	gnl.c
-char	*ft_gnl(int fd);
-char	*ft_strdup(char *s1, char *s2);
-int		ft_strlen(char *str);
+char			*ft_gnl(int fd);
+char			*ft_strdup(char *s1, char *s2);
+int				ft_strlen(char *str);
 
 //	pasring.c
-bool	ft_complexfile(char *file, int i, t_state *state);
-bool	ft_checkfile(char *file, t_state *state);
-bool	ft_strchr(char *s1, char *s2);
+uint32_t		ft_atoul(char *str);
+bool			ft_complexfile(char *file, int i, t_state *state);
+bool			ft_checkfile(char *file, t_state *state);
+bool			ft_strchr(char *s1, char *s2);
 
 // start_state
-void	ft_start_state(t_state *state);
-void	ft_save_map(t_state *state, char *file);
+void			ft_start_state(t_state *state);
+void			ft_save_map(t_state *state, char *file);
 
 #endif

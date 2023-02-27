@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 08:39:49 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/25 00:18:06 by atopalli         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   parsing.c                                      ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/26 22:53:21 by atopalli            ██║███████╗          */
+/*   Updated: 2023/02/27 00:26:43 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,26 @@ uint32_t	ft_atoul(char *str)
 {
 	int			i;
 	uint32_t	nb;
+	int			color;
+	int			pos;
 
 	i = 0;
-	nb = 0;
+	pos = 24;
+	nb = 255;
 	while (str[i] == ' ')
 		i += 1;
+	color = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nb = nb * 10 + str[i] - '0';
+		color = color * 10 + str[i] - '0';
 		i += 1;
 		if (str[i] == ',')
+		{
+			nb += color << pos;
+			pos -= 8;
 			i += 1;
+			color = 0;
+		}
 	}
 	if (i == 0 || str[i] != '\0')
 		return (-1);
@@ -48,6 +57,20 @@ char	*ft_parsepath(char *file)
 	if (fd == -1)
 		return (NULL);
 	return (close(fd), path);
+}
+
+//will be deleted when not needed no more
+bool	ft_printmap(int fd, char *line)
+{
+	if (!line)
+		line = ft_gnl(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = ft_gnl(fd);
+	}
+	return (close(fd), true);
 }
 
 bool	ft_complexfile(char *file, int i, t_state *state)
@@ -102,6 +125,7 @@ bool	ft_checkfile(char *file, t_state *state)
 	}
 	if (i != 0 && i != 7)
 		return (close(fd), false);
+	ft_printmap(fd, line);
 	return (close(fd), true);
 }
 

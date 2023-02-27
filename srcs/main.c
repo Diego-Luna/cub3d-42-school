@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: atopalli <atopalli@student.42quebec.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/25 01:39:47 by atopalli         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   main.c                                         ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/23 08:25:31 by atopalli            ██║███████╗          */
+/*   Updated: 2023/02/27 00:33:54 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "../includes/cub3d.h"
+#include "../includes/cub3d.h"
 #include <string.h>
 #define WIDTH 512
 #define HEIGHT 512
@@ -34,7 +34,7 @@ void	hook(void *param)
 
 int	main(int ac, char **av)
 {
-	t_state		state;
+	t_state	state;
 
 	if (ac != 2)
 		return (0);
@@ -50,8 +50,14 @@ int	main(int ac, char **av)
 		return (0);
 	printf("OK!\n");
 	state.img = mlx_new_image(state.mlx, 128, 128);
-	memset(state.img->pixels, 255, state.img->width
-		* state.img->height * sizeof(int));
+	mlx_put_string(state.mlx, "hello world", 0, 0);
+	for (uint32_t x = 0; x < WIDTH; ++x)
+	{
+		for (uint32_t y = 0; y < HEIGHT / 2; ++y)
+		{
+			mlx_put_pixel(state.img, x, y, ft_atoul("255,0,0"));
+		}
+	}
 	mlx_image_to_window(state.mlx, state.img, 0, 0);
 	mlx_loop_hook(state.mlx, &hook, (void *)&state);
 	mlx_loop(state.mlx);
