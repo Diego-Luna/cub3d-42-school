@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/27 12:57:05 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:49:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int ac, char **av)
 	ft_start_state(&state);
 	ft_save_map(&state, av[1]);
 	ft_valid_map(&state);
+
 	state.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (!state.mlx)
 		return (0);

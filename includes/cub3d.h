@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/27 12:54:44 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:50:24 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <unistd.h>
 
 # define EXTENSION ".cub"
+# define PAHT_NO_TEXT "./include/dev.png"
 
 # define NO_D 0
 # define D_NO 1
