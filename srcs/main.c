@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/28 12:08:41 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   main.c                                         ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/23 08:25:31 by atopalli            ██║███████╗          */
+/*   Updated: 2023/02/28 13:32:08 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,9 @@ int	main(int ac, char **av)
 	mlx_terminate(state.mlx);
 	ft_free_all(&state);
 	return (0);
+}
+
+void	ft_error_print(char *msg)
+{
+	write(2, msg, ft_strlen(msg));
 }

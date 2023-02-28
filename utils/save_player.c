@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   save_player.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 11:27:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/28 12:01:15 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   save_player.c                                  ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/28 11:27:35 by dluna-lo            ██║███████╗          */
+/*   Updated: 2023/02/28 13:10:07 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void ft_save_info_player(t_state *state, char c, int y, int x)
+void	ft_save_info_player(t_state *state, char c, int y, int x)
 {
 	if (c != 'N' || c != 'S' || c != 'E' || c != 'W')
-		return;
+		return ;
 	state->player.position_x = x;
 	state->player.position_y = y;
 	if (c == 'N')
@@ -28,6 +28,7 @@ void ft_save_info_player(t_state *state, char c, int y, int x)
 		state->player.direction = D_WE;
 }
 
-void	ft_player_start(t_state *state){
+void	ft_player_start(t_state *state)
+{
 	ft_run_map_xy(state, ft_save_info_player);
 }
