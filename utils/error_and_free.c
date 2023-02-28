@@ -1,52 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_callo.c                                         :+:      :+:    :+:   */
+/*   Error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 14:28:08 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/27 12:55:53 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/24 18:20:51 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/28 11:22:28 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	*ft_calloc(size_t size, size_t type)
-{
-	size_t		i;
-	char	*str;
-
-	i = 0;
-	str = malloc(size * type);
-	if (str == NULL)
-		ft_only_error("Error in malloc");
-	while (i < size * type)
-	{
-		str[i] = 0;
-		i++;
-	}
-	return (str);
+void	ft_error_print(char *msg){
+	write(2, msg, ft_strlen(msg));
 }
 
-char	*ft_newstr(char *str)
+void	ft_error(t_state *state, char *msg)
 {
-	int		i;
-	int		size;
-	char	*new;
+	ft_error_print(msg);
+	ft_free_all(state);
+	exit(0);
+}
 
-	i = 0;
-	size = 0;
-	new = ft_calloc(ft_strlen(str) + 1, sizeof(char));
-	if (!new)
-		ft_only_error("Error in malloc");
-	size = ft_strlen(str);
-	while (i < size)
-	{
-		new[i] = str[i];
-		i++;
-	}
-	return (new);
+void	ft_only_error(char *msg)
+{
+	ft_error_print(msg);
+	exit(0);
 }
 
 char	*ft_free(char *src)

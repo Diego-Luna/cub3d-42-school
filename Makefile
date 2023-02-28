@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/27 12:49:37 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/02/28 11:42:35 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,10 @@ UTILS	=	$(UTLSDIR)parsing.c		\
 			$(UTLSDIR)gnl/gnl.c		\
 			$(UTLSDIR)start_state.c	\
 			$(UTLSDIR)save_map.c	\
-			$(UTLSDIR)ft_callo.c		\
-			$(UTLSDIR)ft_valid_map.c		\
-			$(UTLSDIR)Error.c		\
+			$(UTLSDIR)allocation.c		\
+			$(UTLSDIR)valid_map.c		\
+			$(UTLSDIR)error_and_free.c		\
+			$(UTLSDIR)save_player.c		\
 
 # MLX
 USER	=	$(shell whoami)

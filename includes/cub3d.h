@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/27 17:23:11 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:40:29 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,13 @@ bool ft_valid_map(t_state *state);
 // Error
 void	ft_error(t_state *state, char *msg);
 void	ft_only_error(char *msg);
+
+// utils map
+void	ft_run_map_xy(t_state *state, void (*f)(t_state *, char, int, int));
+
+
+// Player
+void	ft_player_start(t_state *state);
 
 // utils
 void	*ft_calloc(size_t size, size_t type);
