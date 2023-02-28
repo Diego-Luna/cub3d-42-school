@@ -6,14 +6,11 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/23 08:25:31 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/28 13:32:08 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/02/28 13:44:04 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <string.h>
-#define WIDTH 512
-#define HEIGHT 512
 
 void	hook(void *param)
 {

@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/28 13:12:43 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/02/28 13:44:08 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 
 # define EXTENSION ".cub"
@@ -29,12 +30,10 @@
 # define D_SO 2
 # define D_WE 3
 # define D_EA 4
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
+# define WIDTH 640
+# define HEIGHT 480
 # define TEX_WIDTH 64  // must be power of two
 # define TEX_HEIGHT 64 // must be power of two
-# define MAP_WIDTH 24
-# define MAP_HEIGHT 24
 # define NUM_SPRITES 19
 
 typedef struct s_map
