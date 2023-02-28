@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/27 12:49:37 by dluna-lo         ###   ########.fr        #
+#                                                   if(success){};             #
+#    Makefile                                       ██╗  ██╗██████╗            #
+#                                                   ██║  ██║╚════██╗           #
+#    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
+#                                                   ╚════██║██╔═══╝            #
+#    Created: 2023/02/23 08:29:42 by atopalli            ██║███████╗           #
+#    Updated: 2023/02/27 23:31:24 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ UTILS	=	$(UTLSDIR)parsing.c		\
 			$(UTLSDIR)gnl/gnl.c		\
 			$(UTLSDIR)start_state.c	\
 			$(UTLSDIR)save_map.c	\
-			$(UTLSDIR)ft_callo.c		\
-			$(UTLSDIR)ft_valid_map.c		\
+			$(UTLSDIR)allocation.c	\
+			$(UTLSDIR)valid_map.c	\
 			$(UTLSDIR)Error.c		\
 
 # MLX
@@ -53,16 +53,16 @@ all:		$(NAME)
 
 $(NAME):	$(SRCS) $(UTILS)
 	@for i in $(SRCS) $(UTILS); do \
-		sleep 0.233; \
+		sleep 0.123; \
 		echo "$(YELLOW)Compiling: $(RESET)$$i"; \
 	done
 	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
-	@sleep 	0.333
+	@sleep 	0.321
 	@echo	"$(GREEN)$(NAME) created$(RESET)"
 
 clean:
 	@for i in $(SRCS) $(UTILS); do \
-		sleep 0.333; \
+		sleep 0.213; \
 		echo "$(RED)Deleting: $(RESET)$$i.o"; \
 		rm -f $$i.o; \
 	done

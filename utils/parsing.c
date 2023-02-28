@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/26 22:53:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/27 00:26:43 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/02/27 23:33:32 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,29 @@
 
 uint32_t	ft_atoul(char *str)
 {
-	int			i;
 	uint32_t	nb;
 	int			color;
 	int			pos;
 
-	i = 0;
 	pos = 24;
 	nb = 255;
-	while (str[i] == ' ')
-		i += 1;
+	while (*str == ' ')
+		str++;
 	color = 0;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		color = color * 10 + str[i] - '0';
-		i += 1;
-		if (str[i] == ',')
+		color = color * 10 + *str - '0';
+		str++;
+		if (*str == ',')
 		{
 			nb += color << pos;
 			pos -= 8;
-			i += 1;
 			color = 0;
+			str++;
 		}
 	}
-	if (i == 0 || str[i] != '\0')
-		return (-1);
+	if (*str != '\0')
+		return (0);
 	return (nb);
 }
 
@@ -54,23 +52,10 @@ char	*ft_parsepath(char *file)
 		i += 1;
 	path = ft_strdup(file + i, NULL);
 	fd = open(path, O_RDONLY);
+	printf("%d", fd);
 	if (fd == -1)
-		return (NULL);
+		return (free(path), NULL);
 	return (close(fd), path);
-}
-
-//will be deleted when not needed no more
-bool	ft_printmap(int fd, char *line)
-{
-	if (!line)
-		line = ft_gnl(fd);
-	while (line)
-	{
-		printf("%s", line);
-		free(line);
-		line = ft_gnl(fd);
-	}
-	return (close(fd), true);
 }
 
 bool	ft_complexfile(char *file, int i, t_state *state)
@@ -106,26 +91,26 @@ bool	ft_checkfile(char *file, t_state *state)
 	int		fd;
 	char	*line;
 
-	i = 0;
+	i = -1;
 	fd = open(file, O_RDONLY);
 	line = ft_gnl(fd);
 	if (!ft_strchr(file, EXTENSION) || !line)
 		return (close(fd), false);
 	if (line[0] == 'N' && line[1] == 'O')
 	{
-		while (1)
+		ft_free(state->map.no);
+		ft_free(state->map.so);
+		ft_free(state->map.ea);
+		ft_free(state->map.we);
+		while (++i < 8 && ft_complexfile(file, i, state))
 		{
-			if (i == 7 || !ft_complexfile(line, i, state))
-				break ;
 			free(line);
 			line = ft_gnl(fd);
-			i += 1;
 		}
 		line = ft_gnl(fd);
 	}
-	if (i != 0 && i != 7)
+	if (i != -1 && i != 7)
 		return (close(fd), false);
-	ft_printmap(fd, line);
 	return (close(fd), true);
 }
 

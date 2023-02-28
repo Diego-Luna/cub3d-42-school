@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_callo.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 14:28:08 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/27 12:55:53 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   allocation.c                                   ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/24 14:28:08 by dluna-lo            ██║███████╗          */
+/*   Updated: 2023/02/27 17:11:04 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t size, size_t type)
 {
-	size_t		i;
+	size_t	i;
 	char	*str;
 
 	i = 0;
@@ -51,8 +51,9 @@ char	*ft_newstr(char *str)
 
 char	*ft_free(char *src)
 {
-	if (!src){
-		return NULL;
+	if (!src)
+	{
+		return (NULL);
 	}
 	if (src)
 	{
@@ -66,8 +67,9 @@ char	*ft_free_table(char **src)
 	int	i;
 
 	i = 0;
-	if (!src){
-		return NULL;
+	if (!src)
+	{
+		return (NULL);
 	}
 	while (src[i])
 	{

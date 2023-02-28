@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   start_state.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:22:40 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/27 12:53:16 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   start_state.c                                  ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/24 13:22:40 by dluna-lo            ██║███████╗          */
+/*   Updated: 2023/02/27 22:18:26 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,15 @@ void	ft_start_state(t_state *state)
 	state->map.map = NULL;
 	state->map.w_map = 0;
 	state->map.h_map = 0;
-	state->map.no = NULL;
-	state->map.so = NULL;
-	state->map.we = NULL;
-	state->map.ea = NULL;
-	state->map.floor_color = 0;
-	state->map.floor = NULL; //ft_strdup("76,208,240", NULL); default ?
-	state->map.ceilling_color = 0;
-	state->map.ceilling = NULL; //ft_strdup("52,86,110", NULL); default ?
+	state->map.no = ft_parsepath("./includes/imgs/north.png");
+	state->map.so = ft_parsepath("./includes/imgs/south.png");
+	state->map.we = ft_parsepath("./includes/imgs/west.png");
+	state->map.ea = ft_parsepath("./includes/imgs/east.png");
+	state->map.floor_color = ft_atoul("76,208,240");
+	state->map.ceilling_color = ft_atoul("52,86,110");
 	state->player.position_x = -1;
 	state->player.position_y = -1;
-	state->player.direccion = NO_D;
+	state->player.direction = NO_D;
 	state->player.angle = -1;
 }
 

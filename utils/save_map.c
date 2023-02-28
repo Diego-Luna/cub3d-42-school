@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   save_map.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:58:13 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/27 12:52:28 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   save_map.c                                     ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/24 13:58:13 by dluna-lo            ██║███████╗          */
+/*   Updated: 2023/02/27 17:23:07 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,6 @@ bool	ft_ckeck_caracter_plus(char *line)
 		return (true);
 	}
 	return (false);
-}
-
-void	ft_print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		printf("%s", map[i]);
-		i++;
-	}
 }
 
 int	ft_get_info_map(t_state *state, int i, int *start, int fd)
@@ -115,5 +103,4 @@ void	ft_save_map(t_state *state, char *file)
 	if (!state->map.map)
 		ft_error(state, "Error calloc");
 	ft_crreate_map(state, file, i, start);
-	ft_print_map(state->map.map);
 }
