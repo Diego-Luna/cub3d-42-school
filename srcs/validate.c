@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   validate.c                                     ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/25 01:29:05 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/27 22:36:11 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 01:29:05 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/28 12:08:34 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_check_everything(t_state *state, char **av)
 		ft_free(state->map.we);
 		exit(0);
 	}
-	ft_valid_map(state);
 	ft_save_map(state, av[1]);
+	ft_valid_map(state);
 }
 
 void	ft_print_map(char **map)

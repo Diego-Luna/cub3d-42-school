@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                   if(success){};             #
-#    Makefile                                       ██╗  ██╗██████╗            #
-#                                                   ██║  ██║╚════██╗           #
-#    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
-#                                                   ╚════██║██╔═══╝            #
-#    Created: 2023/02/23 08:29:42 by atopalli            ██║███████╗           #
-#    Updated: 2023/02/27 23:31:24 by atopalli            ╚═╝╚══════╝.qc        #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
+#    Updated: 2023/02/28 11:52:01 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,10 @@ UTILS	=	$(UTLSDIR)parsing.c		\
 			$(UTLSDIR)gnl/gnl.c		\
 			$(UTLSDIR)start_state.c	\
 			$(UTLSDIR)save_map.c	\
-			$(UTLSDIR)allocation.c	\
-			$(UTLSDIR)valid_map.c	\
-			$(UTLSDIR)Error.c		\
+			$(UTLSDIR)allocation.c		\
+			$(UTLSDIR)valid_map.c		\
+			$(UTLSDIR)error_and_free.c		\
+			$(UTLSDIR)save_player.c		\
 
 # MLX
 USER	=	$(shell whoami)

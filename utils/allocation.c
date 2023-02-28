@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   allocation.c                                   ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/24 14:28:08 by dluna-lo            ██║███████╗          */
-/*   Updated: 2023/02/27 17:11:04 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   allocation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 14:28:08 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/28 11:54:20 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,44 +47,4 @@ char	*ft_newstr(char *str)
 		i++;
 	}
 	return (new);
-}
-
-char	*ft_free(char *src)
-{
-	if (!src)
-	{
-		return (NULL);
-	}
-	if (src)
-	{
-		free(src);
-	}
-	return (NULL);
-}
-
-char	*ft_free_table(char **src)
-{
-	int	i;
-
-	i = 0;
-	if (!src)
-	{
-		return (NULL);
-	}
-	while (src[i])
-	{
-		ft_free(src[i]);
-		i++;
-	}
-	free(src);
-	return (NULL);
-}
-
-void	ft_free_all(t_state *state)
-{
-	ft_free_table(state->map.map);
-	ft_free(state->map.no);
-	ft_free(state->map.so);
-	ft_free(state->map.we);
-	ft_free(state->map.ea);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   cub3d.h                                        ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/27 17:58:55 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
+/*   Updated: 2023/02/28 11:52:39 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <unistd.h>
 
 # define EXTENSION ".cub"
+# define PAHT_NO_TEXT "./include/dev.png"
 
 # define NO_D 0
 # define D_NO 1
@@ -60,6 +61,26 @@ typedef struct s_state
 	t_player	player;
 }				t_state;
 
+
+// -> Raycasting
+struct Sprite
+{
+  double x;
+  double y;
+  int texture;
+};
+
+#define screenWidth 640
+#define screenHeight 480
+#define texWidth 64 // must be power of two
+#define texHeight 64 // must be power of two
+#define mapWidth 24
+#define mapHeight 24
+
+#define numSprites 19
+
+// <- Raycasting
+
 /*		utils		*/
 /*		gnl			*/
 //	gnl.c
@@ -81,8 +102,15 @@ void			ft_save_map(t_state *state, char *file);
 bool			ft_valid_map(t_state *state);
 
 // Error
-void			ft_error(t_state *state, char *msg);
-void			ft_only_error(char *msg);
+void	ft_error(t_state *state, char *msg);
+void	ft_only_error(char *msg);
+
+// utils map
+void	ft_run_map_xy(t_state *state, void (*f)(t_state *, char, int, int));
+
+
+// Player
+void	ft_player_start(t_state *state);
 
 // utils
 void			*ft_calloc(size_t size, size_t type);
