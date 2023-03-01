@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/28 11:52:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:26:17 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@
 # define D_SO 2
 # define D_WE 3
 # define D_EA 4
+
+typedef struct s_double_po
+{
+	double x;
+  double y;
+}				t_double_po;
+
+typedef struct s_int_po
+{
+	int x;
+  int y;
+}				t_int_po;
 
 typedef struct s_map
 {
@@ -53,31 +65,39 @@ typedef struct s_player
 	int			angle;
 }				t_player;
 
+typedef struct s_ray
+{
+	t_double_po pos;
+	t_double_po d_side;
+	t_double_po d_delta;
+
+	t_double_po v;
+	t_int_po w;
+	t_int_po text;
+	t_double_po t_pos;
+
+	t_int_po map;
+	t_int_po step;
+	t_int_po draw;
+
+	double camera;
+	int side;
+	int mouse_y;
+} t_ray;
+
 typedef struct s_state
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_map		map;
 	t_player	player;
+	t_ray ray;
 }				t_state;
-
-
-// -> Raycasting
-struct Sprite
-{
-  double x;
-  double y;
-  int texture;
-};
 
 #define screenWidth 640
 #define screenHeight 480
-#define texWidth 64 // must be power of two
-#define texHeight 64 // must be power of two
-#define mapWidth 24
-#define mapHeight 24
 
-#define numSprites 19
+#define SCREEN_W 1500
 
 // <- Raycasting
 
