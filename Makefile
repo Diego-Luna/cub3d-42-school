@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/23 08:29:42 by atopalli          #+#    #+#              #
-#    Updated: 2023/02/28 11:52:01 by dluna-lo         ###   ########.fr        #
+#                                                   if(success){};             #
+#    Makefile                                       ██╗  ██╗██████╗            #
+#                                                   ██║  ██║╚════██╗           #
+#    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
+#                                                   ╚════██║██╔═══╝            #
+#    Created: 2023/02/23 08:29:42 by atopalli            ██║███████╗           #
+#    Updated: 2023/03/01 23:22:27 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,17 +18,17 @@ CC		=	gcc $(FLAGS)
 
 # FILES
 SRCSDIR	=	srcs/
-SRCS	=	$(SRCSDIR)main.c		\
-			$(SRCSDIR)validate.c	\
+SRCS	=	$(SRCSDIR)main.c			\
+			$(SRCSDIR)validate.c		\
 
 UTLSDIR	=	utils/
-UTILS	=	$(UTLSDIR)parsing.c		\
-			$(UTLSDIR)gnl/gnl.c		\
-			$(UTLSDIR)start_state.c	\
-			$(UTLSDIR)save_map.c	\
+UTILS	=	$(UTLSDIR)parsing.c			\
+			$(UTLSDIR)gnl/gnl.c			\
+			$(UTLSDIR)start_state.c		\
+			$(UTLSDIR)save_map.c		\
 			$(UTLSDIR)allocation.c		\
 			$(UTLSDIR)valid_map.c		\
-			$(UTLSDIR)error_and_free.c		\
+			$(UTLSDIR)error_and_free.c	\
 			$(UTLSDIR)save_player.c		\
 
 # MLX

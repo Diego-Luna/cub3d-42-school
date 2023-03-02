@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/23 08:25:31 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/28 13:44:04 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/02 01:17:13 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	hook(void *param)
 {
-	t_state	*mlx;
+	t_state	*state;
 
-	mlx = (t_state *)param;
-	if (mlx_is_key_down(mlx->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx->mlx);
-	if (mlx_is_key_down(mlx->mlx, MLX_KEY_UP))
-		mlx->img->instances[0].y -= 5;
-	if (mlx_is_key_down(mlx->mlx, MLX_KEY_DOWN))
-		mlx->img->instances[0].y += 5;
-	if (mlx_is_key_down(mlx->mlx, MLX_KEY_LEFT))
-		mlx->img->instances[0].x -= 5;
-	if (mlx_is_key_down(mlx->mlx, MLX_KEY_RIGHT))
-		mlx->img->instances[0].x += 5;
+	state = (t_state *)param;
+	if (mlx_is_key_down(state->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(state->mlx);
+	if (mlx_is_key_down(state->mlx, MLX_KEY_UP))
+		state->img->instances[0].y -= 5;
+	if (mlx_is_key_down(state->mlx, MLX_KEY_DOWN))
+		state->img->instances[0].y += 5;
+	if (mlx_is_key_down(state->mlx, MLX_KEY_LEFT))
+		state->img->instances[0].x -= 5;
+	if (mlx_is_key_down(state->mlx, MLX_KEY_RIGHT))
+		state->img->instances[0].x += 5;
 }
 
 int	main(int ac, char **av)
@@ -46,7 +46,6 @@ int	main(int ac, char **av)
 	if (!state.mlx)
 		return (0);
 	state.img = mlx_new_image(state.mlx, 128, 128);
-	mlx_put_string(state.mlx, "hello world", WIDTH / 2, HEIGHT / 2);
 	mlx_image_to_window(state.mlx, state.img, 0, 0);
 	mlx_loop_hook(state.mlx, &hook, (void *)&state);
 	mlx_loop(state.mlx);

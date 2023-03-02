@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/28 13:44:08 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/01 19:26:27 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define D_SO 2
 # define D_WE 3
 # define D_EA 4
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1920
+# define HEIGHT 1080
 # define TEX_WIDTH 64  // must be power of two
 # define TEX_HEIGHT 64 // must be power of two
 # define NUM_SPRITES 19
@@ -53,11 +53,20 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int			position_x;
-	int			position_y;
+	double		position_x;
+	double		position_y;
 	int			direction;
 	int			angle;
 }				t_player;
+
+typedef struct s_ray
+{
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		time;
+}				t_ray;
 
 typedef struct s_state
 {
@@ -115,5 +124,7 @@ char			*ft_parsepath(char *file);
 
 //validate.c
 void			ft_check_everything(t_state *state, char **av);
+
+void			ft_error_print(char *msg);
 
 #endif

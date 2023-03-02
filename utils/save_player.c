@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/28 11:27:35 by dluna-lo            ██║███████╗          */
-/*   Updated: 2023/02/28 13:10:07 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/01 17:36:37 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_save_info_player(t_state *state, char c, int y, int x)
 {
 	if (c != 'N' || c != 'S' || c != 'E' || c != 'W')
 		return ;
-	state->player.position_x = x;
-	state->player.position_y = y;
+	state->player.position_x = (double)x;
+	state->player.position_y = (double)y;
 	if (c == 'N')
 		state->player.direction = D_NO;
 	else if (c == 'S')
