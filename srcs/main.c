@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/28 18:19:46 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:15:48 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ void	ft_keys(void *param)
 		state->img->instances[0].x -= 5;
 	if (mlx_is_key_down(state->mlx, MLX_KEY_RIGHT))
 		state->img->instances[0].x += 5;
-}
-
-void	ft_routine(void *param)
-{
-	t_state	*state;
-	t_state	*state;
-
-	state = (t_state *)param;
-  state->ray.pos.x = 0;
 }
 
 int	main(int ac, char **av)

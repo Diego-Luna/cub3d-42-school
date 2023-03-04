@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:27:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/28 12:01:15 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:10:08 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void ft_save_info_player(t_state *state, char c, int y, int x)
 	state->player.position_x = x;
 	state->player.position_y = y;
 	if (c == 'N')
+	{
 		state->player.direction = D_NO;
+		state->player.planeX = 0;
+		state->player.planeY = 0.66;
+	}
 	else if (c == 'S')
 		state->player.direction = D_SO;
 	else if (c == 'E')

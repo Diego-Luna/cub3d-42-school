@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/02/28 18:26:17 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:36:20 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_player
 	int			position_y;
 	int			direction;
 	int			angle;
+	double			planeX;
+	double			planeY;
 }				t_player;
 
 typedef struct s_ray
@@ -75,14 +77,18 @@ typedef struct s_ray
 	t_int_po w;
 	t_int_po text;
 	t_double_po t_pos;
+	t_double_po raydir;
+	t_double_po dir;
 
 	t_int_po map;
 	t_int_po step;
 	t_int_po draw;
 
-	double camera;
+	double camerax;
 	int side;
 	int mouse_y;
+
+	bool hit;
 } t_ray;
 
 typedef struct s_state
@@ -96,8 +102,9 @@ typedef struct s_state
 
 #define screenWidth 640
 #define screenHeight 480
+// #define SCREEN_W 1500
 
-#define SCREEN_W 1500
+#define PRECISION 1500
 
 // <- Raycasting
 
@@ -141,5 +148,8 @@ char			*ft_parsepath(char *file);
 
 //validate.c
 void			ft_check_everything(t_state *state, char **av);
+
+// ft_routine
+void	ft_routine(void *param);
 
 #endif
