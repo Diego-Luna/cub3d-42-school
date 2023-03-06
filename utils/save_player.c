@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   save_player.c                                  ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/28 11:27:35 by dluna-lo            ██║███████╗          */
-/*   Updated: 2023/03/06 14:01:57 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   save_player.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 11:27:35 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/06 17:20:15 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_save_info_player(t_state *state, char c, int y, int x)
 	if (c == 'N')
 	{
 		state->player.direction = D_NO;
-		state->player.planeX = 0;
-		state->player.planeY = 0.66;
+		state->player.position_x = 0;
+		state->player.position_y= 0.66;
 	}
 	else if (c == 'S')
 		state->player.direction = D_SO;

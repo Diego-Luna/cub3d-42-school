@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   save_map.c                                     ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/24 13:58:13 by dluna-lo            ██║███████╗          */
-/*   Updated: 2023/03/06 14:01:55 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   save_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 13:58:13 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/06 18:53:35 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ void	ft_crreate_map(t_state *state, char *file, int count, int start)
 {
 	int		i;
 	int		fd;
-	int		wi;
+	int		index_table;
 	char	*line;
 
+	(void)count;
 	fd = open(file, O_RDONLY);
 	i = 0;
-	wi = 0;
+	index_table = 0;
 	line = ft_gnl(fd);
-	(void)count;
 	while (line != NULL)
 	{
-		if (i >= start && wi < state->map.h_map)
+		if (i >= start && index_table < state->map.h_map)
 		{
-			state->map.map[wi] = ft_newstr(line);
-			wi++;
+			state->map.map[index_table] = ft_newstr(line);
+			index_table++;
 		}
 		i++;
 		line = ft_free(line);

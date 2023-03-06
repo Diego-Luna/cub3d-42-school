@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   routine.c                                      ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/03/03 13:15:39 by dluna-lo            ██║███████╗          */
-/*   Updated: 2023/03/06 15:21:40 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 13:15:39 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/06 18:55:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_check_side_hit(t_state *state)
 	else
 	{
 		ray->d_side.y += ray->d_delta.y;
-		// ray->map.y += ray->step.y; //error
+		ray->map.y += ray->step.y;
 		ray->side = 1;
 		if (ray->step.y >= 0)
 			ray->side = 3;
@@ -75,10 +75,9 @@ void	ft_check_side_hit(t_state *state)
 }
 
 // Perform DDA
-void	ft_perform_dda(t_state *state)
+void	ft_perform_DDA(t_state *state)
 {
 	t_ray	*ray;
-	bool	hit;
 
 	ray = &state->ray;
 	if (ray->d_side.x < ray->d_side.y)
@@ -93,8 +92,8 @@ void	ft_perform_dda(t_state *state)
 		ray->map.y += ray->step.y;
 		ray->side = 1;
 	}
-	hit = false;
-	while (!hit)
+	ray->hit = false;
+	while (!ray->hit)
 	{
 		ft_check_side_hit(state);
 		if (state->map.map[ray->map.x][ray->map.y] == '1')
@@ -136,11 +135,11 @@ void	ft_routine(void *param)
 	state = (t_state *)param;
 	state->ray.pos.x = 0;
 	state->ray.pos.y = SCREENWIDTH;
-	// while (state->ray.pos.x <= screenWidth + 1)
-	// {
-	// ft_ray_loop(state);
-	// ft_perform_DDA(state);
-	// ft_ray_2(state);
-	// state->ray.pos.x += PRECISION;
-	// }
+	while (state->ray.pos.x < (SCREENWIDTH * 10) + 1)
+	{
+	ft_ray_loop(state);
+	ft_perform_DDA(state);
+	ft_ray_2(state);
+	state->ray.pos.x += PRECISION;
+	}
 }
