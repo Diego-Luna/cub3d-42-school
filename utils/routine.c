@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_routine.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 13:15:39 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/03/06 13:58:08 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   routine.c                                      ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/03/03 13:15:39 by dluna-lo            ██║███████╗          */
+/*   Updated: 2023/03/06 15:21:40 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	ft_ray_loop(t_state *state)
 {
-	t_ray *ray;
+	t_ray	*ray;
 
 	ray = &state->ray;
-
-	ray->camerax = 2 * ray->pos.x / (double)screenWidth - 1;
-
-	ray->raydir.x = ray->dir.x + state->player.planeX * ray->camerax;
-	ray->raydir.y = ray->dir.y + state->player.planeY * ray->camerax;
+	ray->camerax = 2 * ray->pos.x / (double)SCREENWIDTH - 1;
+	ray->raydir.x = ray->dir.x + state->player.plane_x * ray->camerax;
+	ray->raydir.y = ray->dir.y + state->player.plane_y * ray->camerax;
 	ray->map.x = (int)state->player.position_x;
 	ray->map.y = (int)state->player.position_y;
 	ray->d_delta.x = fabs(1 / ray->raydir.x);
@@ -30,28 +28,32 @@ void	ft_ray_loop(t_state *state)
 	if (ray->raydir.x < 0)
 	{
 		ray->step.x = -1;
-		ray->d_side.x = ( state->player.position_x - ray->map.x) * ray->d_delta.x;
+		ray->d_side.x = (state->player.position_x - ray->map.x)
+			* ray->d_delta.x;
 	}
 	else
 	{
-		ray->step.x =  1;
-		ray->d_side.x = (ray->map.x + 1.0 - state->player.position_x) * ray->d_delta.x;
+		ray->step.x = 1;
+		ray->d_side.x = (ray->map.x + 1.0 - state->player.position_x)
+			* ray->d_delta.x;
 	}
 	if (ray->raydir.y < 0)
 	{
 		ray->step.y = -1;
-		ray->d_side.y = (state->player.position_y - ray->map.y) * ray->d_delta.y;
+		ray->d_side.y = (state->player.position_y - ray->map.y)
+			* ray->d_delta.y;
 	}
 	else
 	{
 		ray->step.y = 1;
-		ray->d_side.y = (ray->map.y + 1.0 - state->player.position_y) * ray->d_delta.y;
+		ray->d_side.y = (ray->map.y + 1.0 - state->player.position_y)
+			* ray->d_delta.y;
 	}
 }
 
 void	ft_check_side_hit(t_state *state)
 {
-	t_ray *ray;
+	t_ray	*ray;
 
 	ray = &state->ray;
 	if (ray->d_side.x < ray->d_side.y)
@@ -73,9 +75,9 @@ void	ft_check_side_hit(t_state *state)
 }
 
 // Perform DDA
-void	ft_perform_DDA(t_state *state)
+void	ft_perform_dda(t_state *state)
 {
-	t_ray *ray;
+	t_ray	*ray;
 	bool	hit;
 
 	ray = &state->ray;
@@ -102,26 +104,25 @@ void	ft_perform_DDA(t_state *state)
 	}
 }
 
-
-void ft_ray_2(t_state *state)
+void	ft_ray_2(t_state *state)
 {
-	t_ray *ray;
+	t_ray	*ray;
 	double	wall_distance;
 	double	wall_x;
 	int		line_height;
 
-	ray = &state->ray;;
+	ray = &state->ray;
 	if (!(ray->side % 2))
 		wall_distance = (ray->d_side.x - ray->d_delta.x);
 	else
 		wall_distance = (ray->d_side.y - ray->d_delta.y);
-	line_height = (int)(screenWidth / wall_distance);
-	ray->draw.x = -line_height / 2 + screenWidth / 2;
+	line_height = (int)(SCREENWIDTH / wall_distance);
+	ray->draw.x = -line_height / 2 + SCREENWIDTH / 2;
 	if (ray->draw.x < 0)
 		ray->draw.x = 0;
-	ray->draw.y = line_height / 2 + screenWidth / 2;
-	if (ray->draw.y >= screenWidth)
-		ray->draw.y = screenWidth - 1;
+	ray->draw.y = line_height / 2 + SCREENWIDTH / 2;
+	if (ray->draw.y >= SCREENWIDTH)
+		ray->draw.y = SCREENWIDTH - 1;
 	if (ray->side % 2 == 0)
 		wall_x = state->player.position_y + (wall_distance * ray->raydir.y);
 	else
@@ -133,13 +134,13 @@ void	ft_routine(void *param)
 	t_state	*state;
 
 	state = (t_state *)param;
-  state->ray.pos.x = 0;
-	state->ray.pos.y = screenWidth;
+	state->ray.pos.x = 0;
+	state->ray.pos.y = SCREENWIDTH;
 	// while (state->ray.pos.x <= screenWidth + 1)
 	// {
-		// ft_ray_loop(state);
-		// ft_perform_DDA(state);
-		// ft_ray_2(state);
-		// state->ray.pos.x += PRECISION;
+	// ft_ray_loop(state);
+	// ft_perform_DDA(state);
+	// ft_ray_2(state);
+	// state->ray.pos.x += PRECISION;
 	// }
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
-/*   Updated: 2023/03/06 13:52:01 by dluna-lo         ###   ########.fr       */
+/*                                                  if(success){};            */
+/*   cub3d.h                                        ██╗  ██╗██████╗           */
+/*                                                  ██║  ██║╚════██╗          */
+/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
+/*                                                  ╚════██║██╔═══╝           */
+/*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
+/*   Updated: 2023/03/06 15:10:08 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@
 
 typedef struct s_double_po
 {
-	double x;
-  double y;
+	double		x;
+	double		y;
 }				t_double_po;
 
 typedef struct s_int_po
 {
-	int x;
-  int y;
+	int			x;
+	int			y;
 }				t_int_po;
 
 typedef struct s_map
@@ -69,33 +69,33 @@ typedef struct s_player
 	double		position_y;
 	int			direction;
 	int			angle;
-	double			planeX;
-	double			planeY;
+	double		plane_x;
+	double		plane_y;
 }				t_player;
 
 typedef struct s_ray
 {
-	t_double_po pos;
-	t_double_po d_side;
-	t_double_po d_delta;
+	t_double_po	pos;
+	t_double_po	d_side;
+	t_double_po	d_delta;
 
-	t_double_po v;
-	t_int_po w;
-	t_int_po text;
-	t_double_po t_pos;
-	t_double_po raydir;
-	t_double_po dir;
+	t_double_po	v;
+	t_int_po	w;
+	t_int_po	text;
+	t_double_po	t_pos;
+	t_double_po	raydir;
+	t_double_po	dir;
 
-	t_int_po map;
-	t_int_po step;
-	t_int_po draw;
+	t_int_po	map;
+	t_int_po	step;
+	t_int_po	draw;
 
-	double camerax;
-	int side;
-	int mouse_y;
+	double		camerax;
+	int			side;
+	int			mouse_y;
 
-	bool hit;
-} t_ray;
+	bool		hit;
+}				t_ray;
 
 typedef struct s_raytace
 {
@@ -134,17 +134,13 @@ typedef struct s_state
 	t_player	player;
 	t_rayrace	rayrace;
 	int			ticks;
-	int			lastClickTicks;
-	t_ray ray;
+	int			last_click_ticks;
+	t_ray		ray;
 }				t_state;
 
-#define screenWidth 640
-#define screenHeight 480
-// #define SCREEN_W 1500
-
-#define PRECISION 1500
-
-// <- Raycasting
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
+# define PRECISION 1500
 
 /*		utils		*/
 /*		gnl			*/
@@ -188,7 +184,7 @@ char			*ft_parsepath(char *file);
 void			ft_check_everything(t_state *state, char **av);
 
 // ft_routine
-void	ft_routine(void *param);
+void			ft_routine(void *param);
 
 void			ft_error_print(char *msg);
 
