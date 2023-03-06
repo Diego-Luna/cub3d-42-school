@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   error_and_free.c                               ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/24 18:20:51 by dluna-lo            ██║███████╗          */
-/*   Updated: 2023/02/28 13:09:42 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   error_and_free.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 18:20:51 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/06 13:47:38 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_error(t_state *state, char *msg)
 {
-	ft_error_print(msg);
+	if (msg != NULL)
+		write(2, msg, ft_strlen(msg));
 	ft_free_all(state);
 	exit(0);
 }
 
 void	ft_only_error(char *msg)
 {
-	ft_error_print(msg);
+	if (msg != NULL)
+		write(2, msg, ft_strlen(msg));
 	exit(0);
 }
 

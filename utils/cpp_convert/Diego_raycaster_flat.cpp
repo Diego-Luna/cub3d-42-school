@@ -106,8 +106,8 @@ int main(int /*argc*/, char */*argv*/[])
       //stepping further below works. So the values can be computed as below.
       // Division through zero is prevented, even though technically that's not
       // needed in C++ with IEEE 754 floating point values.
-      double deltaDistX = (rayDirX == 0) ? 1e30 : std::abs(1 / rayDirX);
-      double deltaDistY = (rayDirY == 0) ? 1e30 : std::abs(1 / rayDirY);
+      double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+      double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
 
       double perpWallDist;
 

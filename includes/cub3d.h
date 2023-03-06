@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   cub3d.h                                        ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/23 08:28:14 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/03 20:28:18 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 08:28:14 by atopalli          #+#    #+#             */
+/*   Updated: 2023/03/06 13:52:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,30 @@
 # include <unistd.h>
 
 # define EXTENSION ".cub"
-# define PAHT_NO_TEXT "./include/dev.png"
 
 # define NO_D 0
 # define D_NO 1
 # define D_SO 2
 # define D_WE 3
 # define D_EA 4
+
 # define WIDTH 512
 # define HEIGHT 512
 # define TEX_WIDTH 64  // must be power of two
 # define TEX_HEIGHT 64 // must be power of two
 # define NUM_SPRITES 19
+
+typedef struct s_double_po
+{
+	double x;
+  double y;
+}				t_double_po;
+
+typedef struct s_int_po
+{
+	int x;
+  int y;
+}				t_int_po;
 
 typedef struct s_map
 {
@@ -57,7 +69,33 @@ typedef struct s_player
 	double		position_y;
 	int			direction;
 	int			angle;
+	double			planeX;
+	double			planeY;
 }				t_player;
+
+typedef struct s_ray
+{
+	t_double_po pos;
+	t_double_po d_side;
+	t_double_po d_delta;
+
+	t_double_po v;
+	t_int_po w;
+	t_int_po text;
+	t_double_po t_pos;
+	t_double_po raydir;
+	t_double_po dir;
+
+	t_int_po map;
+	t_int_po step;
+	t_int_po draw;
+
+	double camerax;
+	int side;
+	int mouse_y;
+
+	bool hit;
+} t_ray;
 
 typedef struct s_raytace
 {
@@ -97,15 +135,16 @@ typedef struct s_state
 	t_rayrace	rayrace;
 	int			ticks;
 	int			lastClickTicks;
+	t_ray ray;
 }				t_state;
 
-// -> Raycasting
-struct			s_sprite
-{
-	double		x;
-	double		y;
-	int			texture;
-}				t_sprite;
+#define screenWidth 640
+#define screenHeight 480
+// #define SCREEN_W 1500
+
+#define PRECISION 1500
+
+// <- Raycasting
 
 /*		utils		*/
 /*		gnl			*/
@@ -147,6 +186,9 @@ char			*ft_parsepath(char *file);
 
 //validate.c
 void			ft_check_everything(t_state *state, char **av);
+
+// ft_routine
+void	ft_routine(void *param);
 
 void			ft_error_print(char *msg);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                  if(success){};            */
-/*   main.c                                         ██╗  ██╗██████╗           */
-/*                                                  ██║  ██║╚════██╗          */
-/*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
-/*                                                  ╚════██║██╔═══╝           */
-/*   Created: 2023/02/23 08:25:31 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/03 21:05:22 by atopalli            ╚═╝╚══════╝.qc       */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 08:25:31 by atopalli          #+#    #+#             */
+/*   Updated: 2023/03/06 13:54:50 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods,
 	printf("button: %d, action: %d, mods: %d\n", button, action, mods);
 }
 
-void	hook(void *param)
+void	ft_keys(void *param)
 {
 	t_state	*state;
 
@@ -123,10 +123,11 @@ int	main(int ac, char **av)
 	}
 	mlx_key_hook(state.mlx, key_hook, (void *)&state);
 	mlx_mouse_hook(state.mlx, mouse_hook, (void *)&state);
-	mlx_loop_hook(state.mlx, hook, (void *)&state);
+	mlx_loop_hook(state.mlx, &ft_keys, (void *)&state);
+	mlx_loop_hook(state.mlx, &ft_routine, (void *)&state);
 	mlx_loop(state.mlx);
-	mlx_terminate(state.mlx);
-	ft_free_all(&state);
+	// mlx_terminate(state.mlx);
+	// ft_free_all(&state);
 	return (EXIT_SUCCESS);
 }
 
