@@ -6,12 +6,12 @@
 #    By: atopalli | github/atrobp                   ███████║ █████╔╝           #
 #                                                   ╚════██║██╔═══╝            #
 #    Created: 2023/02/23 08:29:42 by atopalli            ██║███████╗           #
-#    Updated: 2023/03/01 23:22:27 by atopalli            ╚═╝╚══════╝.qc        #
+#    Updated: 2023/03/02 23:06:43 by atopalli            ╚═╝╚══════╝.qc        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS
-NAME	=	cub3D
+PROJECT	=	cub3D
 FLAGS	=	-g -Wall -Wextra -Werror -framework Cocoa -framework OpenGL -framework IOKit
 # FLAGS	=	-g -Wall -Wextra -Werror
 CC		=	gcc $(FLAGS)
@@ -39,42 +39,54 @@ MLXLIB	=	includes/mlx/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/
 # HEADERS
 HEADERS	=	includes/cub3d.h
 
-# Colors
+# COLORS
+RESET	=	\033[0m
 RED		=	\033[0;31m
 GREEN	=	\033[0;32m
 YELLOW	=	\033[0;33m
 BLUE	=	\033[0;34m
 PURPLE	=	\033[0;35m
 CYAN	=	\033[0;36m
-WHITE	=	\033[0;37m
-RESET	=	\033[0m
 
 # RULES
-all:		$(NAME)
+all:
+	@$(MAKE) mlx
+	@$(MAKE) $(PROJECT)
+	
 
-$(NAME):	$(SRCS) $(UTILS)
-	@for i in $(SRCS) $(UTILS); do \
-		sleep 0.123; \
-		echo "$(YELLOW)Compiling: $(RESET)$$i"; \
-	done
-	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(NAME)
+$(PROJECT):	$(SRCS) $(UTILS)
+	@$(CC)	$(SRCS) $(UTILS) $(MLXLIB) -o $(PROJECT)
 	@sleep 	0.321
-	@echo	"$(GREEN)$(NAME) created$(RESET)"
+	@echo	"$(GREEN)$(PROJECT) created$(RESET)"
 
 clean:
-	@for i in $(SRCS) $(UTILS); do \
-		sleep 0.213; \
-		echo "$(RED)Deleting: $(RESET)$$i.o"; \
-		rm -f $$i.o; \
-	done
+	@if [ -f $(PROJECT) ]; then \
+		rm -f $(PROJECT); \
+		echo "$(RED)$(PROJECT) deleted$(RESET)"; \
+	fi
 
 fclean:		clean
-			@rm -f $(NAME)
-			@echo	"$(PURPLE)$(NAME) deleted$(RESET)"
 
 norm:
 	@norminette $(SRCS) $(UTILS) $(HEADERS)
+	
+mlx:
+	@echo "$(RED)Checking dependecies...$(RESET)"
+	@sleep 0.5
+	@if ! [ -d /Users/$(USER)/.brew/opt/glfw/lib/ ]; then \
+		echo "$(PURPLE)Installing glfw...$(RESET)"; \
+		brew install glfw; \
+	fi
+	@if ! [ -d includes/mlx/build ]; then \
+		echo "$(BLUE)Installing mlx...$(RESET)"; \
+		cd includes/mlx && cmake -B build; \
+	fi
+	@if ! [ -e includes/mlx/build/libmlx42.a ]; then \
+		echo "$(CYAN)Compiling mlx...$(RESET)"; \
+		cd includes/mlx && cmake --build build -j4; \
+	fi
+	@echo "$(GREEN)Dependencies ok!$(RESET)"
 
 re:			fclean all
 
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re norm mlx

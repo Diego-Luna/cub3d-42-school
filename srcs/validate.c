@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/25 01:29:05 by atopalli            ██║███████╗          */
-/*   Updated: 2023/02/28 13:13:27 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/03 14:02:46 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_check_everything(t_state *state, char **av)
 		exit(0);
 	}
 	ft_save_map(state, av[1]);
+	ft_player_start(state);
 	ft_valid_map(state);
 }
 

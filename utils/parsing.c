@@ -6,7 +6,7 @@
 /*   By: atopalli | github/atrobp                   ███████║ █████╔╝          */
 /*                                                  ╚════██║██╔═══╝           */
 /*   Created: 2023/02/26 22:53:21 by atopalli            ██║███████╗          */
-/*   Updated: 2023/03/01 11:49:01 by atopalli            ╚═╝╚══════╝.qc       */
+/*   Updated: 2023/03/03 11:44:33 by atopalli            ╚═╝╚══════╝.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*ft_parsepath(char *file)
 		i += 1;
 	path = ft_strdup(file + i, NULL);
 	fd = open(path, O_RDONLY);
-	printf("%d", fd);
 	if (fd == -1)
 		return (free(path), NULL);
 	return (close(fd), path);
